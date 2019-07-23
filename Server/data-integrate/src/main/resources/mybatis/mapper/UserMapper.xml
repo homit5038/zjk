@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it100000.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.it100000.entity.User">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+        <result column="is_del" jdbcType="BIT" property="isDel"/>
+        <result column="is_enable" jdbcType="BIT" property="isEnable"/>
+    </resultMap>
+
+    <select id="selectRolesByUserName" resultType="com.it100000.entity.Role">
+        SELECT tr.*
+        FROM t_user tu,
+             t_role tr,
+             t_user_to_role tutr
+        WHERE tutr.user_id = tu.id
+          AND tutr.role_id = tr.id
+          AND TU.username = #{uname}
+
+    </select>
+    <select id="queryUserByType" resultType="com.it100000.entity.User">
+        SELECT tu.*
+        FROM t_user tu,
+        t_user_to_role tutr,
+        t_role tr
+        WHERE tutr.user_id = tu.id
+        AND tutr.role_id = tr.id
+        <if test="type != null">
+            AND tr.name = #{type}
+        </if>
+    </select>
+
+
+</mapper>

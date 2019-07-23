@@ -1,0 +1,666 @@
+{
+	"info": {
+		"_postman_id": "794e5337-edb5-42e6-bd22-36d9fabf6b7d",
+		"name": "data-integrate",
+		"description": "数据融合项目",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "通用接口",
+			"item": [
+				{
+					"name": "登陆",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/common/login?username=root&password=root",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"login"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "root",
+									"description": "用户名(必填)  测试:管理员 root  巡查员 19988721260"
+								},
+								{
+									"key": "password",
+									"value": "root",
+									"description": "密码(必填)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上传文件 (未完成)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/file/uploadFile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"file",
+								"uploadFile"
+							]
+						},
+						"description": "图片和视频都可使用此接口"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "案件",
+			"item": [
+				{
+					"name": "查询所有案件",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/legal_case/queryLegalCaseAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"legal_case",
+								"queryLegalCaseAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新案件",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/legal_case/updateLegalCase?id=1&name=20190101官渡区VD0殴打监管员&userId=1&areaId=1&monitorId=1&other=其他&site=云南省保山市龙陵县勐糯镇&img=图片名称|图片名称&video=视频名称",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"legal_case",
+								"updateLegalCase"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "案件ID(必填)"
+								},
+								{
+									"key": "name",
+									"value": "20190101官渡区VD0殴打监管员",
+									"description": "案件名称 命名规则：日期+区域+摄像机名称+违章类型"
+								},
+								{
+									"key": "userId",
+									"value": "1",
+									"description": "用户ID"
+								},
+								{
+									"key": "areaId",
+									"value": "1",
+									"description": "区域ID"
+								},
+								{
+									"key": "monitorId",
+									"value": "1",
+									"description": "监控ID"
+								},
+								{
+									"key": "other",
+									"value": "其他",
+									"description": "其他"
+								},
+								{
+									"key": "site",
+									"value": "云南省保山市龙陵县勐糯镇",
+									"description": "违章位置"
+								},
+								{
+									"key": "img",
+									"value": "图片名称|图片名称",
+									"description": "图片名称 多个图片用|分割 (只需要文件名字)"
+								},
+								{
+									"key": "video",
+									"value": "视频名称",
+									"description": "视频名称 只需要视频文件名 "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "插入案件",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/legal_case/insertLegalCase?name=20190101官渡区VD0殴打监管员&userId=1&areaId=1&monitorId=1&other=其他&site=云南省保山市龙陵县勐糯镇&img=图片名称|图片名称&video=视频名称",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"legal_case",
+								"insertLegalCase"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "20190101官渡区VD0殴打监管员",
+									"description": "案件名称 命名规则：日期+区域+摄像机名称+违章类型(必填)"
+								},
+								{
+									"key": "userId",
+									"value": "1",
+									"description": "用户ID(必填)"
+								},
+								{
+									"key": "areaId",
+									"value": "1",
+									"description": "区域ID(必填)"
+								},
+								{
+									"key": "monitorId",
+									"value": "1",
+									"description": "监控ID(必填)"
+								},
+								{
+									"key": "other",
+									"value": "其他",
+									"description": "其他(必填)"
+								},
+								{
+									"key": "site",
+									"value": "云南省保山市龙陵县勐糯镇",
+									"description": "违章位置(必填)"
+								},
+								{
+									"key": "img",
+									"value": "图片名称|图片名称",
+									"description": "图片名称 多个图片用|分割 (只需要文件名字)(必填)"
+								},
+								{
+									"key": "video",
+									"value": "视频名称",
+									"description": "视频名称 只需要视频文件名 (必填)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除案件",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/legal_case/deleteLegalCase?lId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"legal_case",
+								"deleteLegalCase"
+							],
+							"query": [
+								{
+									"key": "lId",
+									"value": "1",
+									"description": "案件ID(必填)"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "案件类型",
+			"item": [
+				{
+					"name": "查询所有案件分类",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/legal_case/queryLegalCaseTypeAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"legal_case",
+								"queryLegalCaseTypeAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新案件分类",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/legal_case/updateLegalCaseType?id=1&name=修改测试1&type=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"legal_case",
+								"updateLegalCaseType"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "分类ID ( 必填 )"
+								},
+								{
+									"key": "name",
+									"value": "修改测试1",
+									"description": "分类名称"
+								},
+								{
+									"key": "pid",
+									"value": "1",
+									"description": "父id",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "0",
+									"description": "分类(0-一级分类 1-二级分类)"
+								},
+								{
+									"key": "isDel",
+									"value": "false",
+									"description": "是否删除 (true | false)",
+									"disabled": true
+								},
+								{
+									"key": "isEnable",
+									"value": "true",
+									"description": "是否启用 (true | false)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "插入案件分类",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/legal_case/insertLegalCaseType?name=子分类1&pid=1&type=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"legal_case",
+								"insertLegalCaseType"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "子分类1",
+									"description": "分类名称"
+								},
+								{
+									"key": "pid",
+									"value": "1",
+									"description": "父id"
+								},
+								{
+									"key": "type",
+									"value": "1",
+									"description": "分类(0-一级分类 1-二级分类)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除案件分类",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/legal_case/deleteLegalCaseType?lId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"legal_case",
+								"deleteLegalCaseType"
+							],
+							"query": [
+								{
+									"key": "lId",
+									"value": "2",
+									"description": "需要删除的案件分类ID"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7ecc5b18-763b-43da-a125-e6b38bec8eea",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "91481541-22bb-4237-8e37-446a4af05cf4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "区域 (具体字段还未确定完成)",
+			"item": [
+				{
+					"name": "查询所有区域",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/area/queryAreaAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"area",
+								"queryAreaAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新区域信息",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/area/updateAreaById?id=1&name=区域名称&isDel=false&isEnable=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"area",
+								"updateAreaById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "区域ID (必填)"
+								},
+								{
+									"key": "name",
+									"value": "区域名称",
+									"description": "区域名称"
+								},
+								{
+									"key": "isDel",
+									"value": "false",
+									"description": "是否删除 (true | false)"
+								},
+								{
+									"key": "isEnable",
+									"value": "true",
+									"description": "是否启用 (true | false)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增区域",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/area/insertArea?id=1&name=区域名称",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"area",
+								"insertArea"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "name",
+									"value": "区域名称"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除区域",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admin/area/deleteArea?aId=区域ID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admin",
+								"area",
+								"deleteArea"
+							],
+							"query": [
+								{
+									"key": "aId",
+									"value": "区域ID",
+									"description": "区域ID (必填)"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5ad90964-7467-48b0-ad10-73445e902db1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9c862b0-e064-46c2-807f-3cfcc8575bfc",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "用户管理(包含管理员和巡查员)",
+			"item": [
+				{
+					"name": "查询所有人员信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增人员",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新人员信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除人员信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "重置巡查员密码为123456",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改密码",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b9a467e8-63a6-4fd4-9a43-24dfa3e611e0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "19161163-675e-4778-b430-e8585d31b51d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
