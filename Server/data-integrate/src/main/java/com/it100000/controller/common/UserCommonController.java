@@ -1,15 +1,19 @@
 package com.it100000.controller.common;
 
+import com.it100000.config.jwt.JwtUtil;
 import com.it100000.dto.BasicResult;
 import com.it100000.entity.User;
+import com.it100000.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -21,6 +25,9 @@ import javax.validation.constraints.NotBlank;
 @RestController
 @RequestMapping("/common")
 public class UserCommonController {
+
+    @Resource
+    private UserService userService;
 
     /**
      * 通用登陆
@@ -34,15 +41,18 @@ public class UserCommonController {
     @RequestMapping("/login")
     public BasicResult login(@NotBlank(message = "用户名不能为空") String username,
                              @NotBlank(message = "密码不能为空") String password) {
-        Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username,password);
-        subject.login(token);
-        log.info("用户:" + username +"登陆,登陆状态:" + subject.isAuthenticated());
-        // 设置返回的信息,把密码和salt设置为空
-        User user = (User) SecurityUtils.getSubject().getPrincipal();
-        user.setPassword(null);
-        user.setSalt(null);
-        return BasicResult.successResult(user);
+        // 获取用户是否存在
+        User u = userService.queryUserInfoByUserName(username);
+        if (u == null) {
+            return new BasicResult(BasicResult.SUCCESS, null, "用户不存在");
+        }
+        String salt = u.getSalt();
+        // 加密用户密码并判断密码
+        String md5Pwd = new SimpleHash("MD5", password, salt, 10).toString();
+        if (!u.getPassword().equals(md5Pwd)) {
+            throw new IncorrectCredentialsException("密码错误");
+        }
+        return new BasicResult(BasicResult.SUCCESS, JwtUtil.sign(username, u.getPassword()), "登陆成功");
     }
 
 

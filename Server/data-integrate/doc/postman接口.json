@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "794e5337-edb5-42e6-bd22-36d9fabf6b7d",
-		"name": "data-integrate",
+		"_postman_id": "a626e36a-b5f2-49d0-820b-0634b950fbfc",
+		"name": "数据融合项目",
 		"description": "数据融合项目",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,12 +15,10 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/common/login?username=root&password=root",
-							"protocol": "http",
+							"raw": "{{base_url}}/common/login?username=root&password=root",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"common",
 								"login"
@@ -42,23 +40,68 @@
 					"response": []
 				},
 				{
-					"name": "上传文件 (未完成)",
+					"name": "退出(暂时失效)",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/file/uploadFile",
-							"protocol": "http",
+							"raw": "{{base_url}}/common/logout",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
-								"file",
-								"uploadFile"
+								"common",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上传文件",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"description": "文件",
+									"type": "file",
+									"src": "/C:/Users/yangx/Desktop/西山区/碧鸡街道.xlsx"
+								}
 							]
 						},
-						"description": "图片和视频都可使用此接口"
+						"url": {
+							"raw": "{{base_url}}/file/saveFile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"file",
+								"saveFile"
+							]
+						},
+						"description": "上传的时候文件名的key为file"
 					},
 					"response": []
 				}
@@ -71,18 +114,34 @@
 					"name": "查询所有案件",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/legal_case/queryLegalCaseAll",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/legal_case/queryLegalCaseAll?pageNum=1&pageSize=15",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"legal_case",
 								"queryLegalCaseAll"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1",
+									"description": "第几页 默认为第一页"
+								},
+								{
+									"key": "pageSize",
+									"value": "15",
+									"description": "每页查询多少条 默认15条"
+								}
 							]
 						}
 					},
@@ -92,14 +151,18 @@
 					"name": "更新案件",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/legal_case/updateLegalCase?id=1&name=20190101官渡区VD0殴打监管员&userId=1&areaId=1&monitorId=1&other=其他&site=云南省保山市龙陵县勐糯镇&img=图片名称|图片名称&video=视频名称",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/legal_case/updateLegalCase?id=1&name=20190101官渡区VD0殴打监管员&userId=1&areaId=1&monitorId=1&other=其他&site=云南省保山市龙陵县勐糯镇&img=图片名称|图片名称&video=视频名称",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"legal_case",
@@ -160,14 +223,18 @@
 					"name": "插入案件",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/legal_case/insertLegalCase?name=20190101官渡区VD0殴打监管员&userId=1&areaId=1&monitorId=1&other=其他&site=云南省保山市龙陵县勐糯镇&img=图片名称|图片名称&video=视频名称",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/legal_case/insertLegalCase?name=20190101官渡区VD0殴打监管员&userId=1&areaId=1&monitorId=1&other=其他&site=云南省保山市龙陵县勐糯镇&img=图片名称|图片名称&video=视频名称",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"legal_case",
@@ -223,14 +290,18 @@
 					"name": "删除案件",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/legal_case/deleteLegalCase?lId=1",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/legal_case/deleteLegalCase?lId=1",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"legal_case",
@@ -256,18 +327,34 @@
 					"name": "查询所有案件分类",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/legal_case/queryLegalCaseTypeAll",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/legal_case/queryLegalCaseTypeAll?pageNum=1&pageSize=15",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"legal_case",
 								"queryLegalCaseTypeAll"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1",
+									"description": "第几页 默认为第一页"
+								},
+								{
+									"key": "pageSize",
+									"value": "15",
+									"description": "每页查询多少条 默认15条"
+								}
 							]
 						}
 					},
@@ -277,14 +364,18 @@
 					"name": "更新案件分类",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/legal_case/updateLegalCaseType?id=1&name=修改测试1&type=0",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/legal_case/updateLegalCaseType?id=1&name=修改测试1&pid=1&type=0&isDel=false&isEnable=true",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"legal_case",
@@ -304,8 +395,7 @@
 								{
 									"key": "pid",
 									"value": "1",
-									"description": "父id",
-									"disabled": true
+									"description": "父id"
 								},
 								{
 									"key": "type",
@@ -315,14 +405,12 @@
 								{
 									"key": "isDel",
 									"value": "false",
-									"description": "是否删除 (true | false)",
-									"disabled": true
+									"description": "是否删除 (true | false)"
 								},
 								{
 									"key": "isEnable",
 									"value": "true",
-									"description": "是否启用 (true | false)",
-									"disabled": true
+									"description": "是否启用 (true | false)"
 								}
 							]
 						}
@@ -333,14 +421,18 @@
 					"name": "插入案件分类",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/legal_case/insertLegalCaseType?name=子分类1&pid=1&type=1",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/legal_case/insertLegalCaseType?name=子分类2&pid=1&type=1",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"legal_case",
@@ -349,18 +441,18 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "子分类1",
-									"description": "分类名称"
+									"value": "子分类2",
+									"description": "分类名称(必填)"
 								},
 								{
 									"key": "pid",
 									"value": "1",
-									"description": "父id"
+									"description": "父id(如果是二级分类则必填)"
 								},
 								{
 									"key": "type",
 									"value": "1",
-									"description": "分类(0-一级分类 1-二级分类)"
+									"description": "分类(0-一级分类 1-二级分类)(必填)"
 								}
 							]
 						}
@@ -371,14 +463,18 @@
 					"name": "删除案件分类",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/legal_case/deleteLegalCaseType?lId=2",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/legal_case/deleteLegalCaseType?lId=2",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"legal_case",
@@ -388,7 +484,7 @@
 								{
 									"key": "lId",
 									"value": "2",
-									"description": "需要删除的案件分类ID"
+									"description": "需要删除的案件分类ID(必填)"
 								}
 							]
 						}
@@ -420,26 +516,43 @@
 			]
 		},
 		{
-			"name": "区域 (具体字段还未确定完成)",
+			"name": "区域",
 			"item": [
 				{
 					"name": "查询所有区域",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/area/queryAreaAll",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/area/queryAreaAll?pageNum=1&pageSize=15",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"area",
 								"queryAreaAll"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1",
+									"description": "第几页 默认为第一页"
+								},
+								{
+									"key": "pageSize",
+									"value": "15",
+									"description": "每页查询多少条 默认15条"
+								}
 							]
-						}
+						},
+						"description": "https://blog.csdn.net/chenpeng19910926/article/details/60140321 字段含义查询"
 					},
 					"response": []
 				},
@@ -447,14 +560,18 @@
 					"name": "更新区域信息",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/area/updateAreaById?id=1&name=区域名称&isDel=false&isEnable=true",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/area/updateAreaById?id=1&name=区域名称&coordinate=102.604559051-25.004734973,102.61293314-25.0022273859999&isDel=false&isEnable=true",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"area",
@@ -470,6 +587,11 @@
 									"key": "name",
 									"value": "区域名称",
 									"description": "区域名称"
+								},
+								{
+									"key": "coordinate",
+									"value": "102.604559051-25.004734973,102.61293314-25.0022273859999",
+									"description": "地图坐标经纬度数组"
 								},
 								{
 									"key": "isDel",
@@ -490,14 +612,18 @@
 					"name": "新增区域",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/area/insertArea?id=1&name=区域名称",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/area/insertArea?name=区域名称&coordinate=102.604559051-25.004734973,102.61293314-25.0022273859999",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"area",
@@ -505,12 +631,14 @@
 							],
 							"query": [
 								{
-									"key": "id",
-									"value": "1"
+									"key": "name",
+									"value": "区域名称",
+									"description": "区域名称(必填)"
 								},
 								{
-									"key": "name",
-									"value": "区域名称"
+									"key": "coordinate",
+									"value": "102.604559051-25.004734973,102.61293314-25.0022273859999",
+									"description": "地图坐标经纬度数组(必填)"
 								}
 							]
 						}
@@ -521,14 +649,18 @@
 					"name": "删除区域",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8080/admin/area/deleteArea?aId=区域ID",
-							"protocol": "http",
+							"raw": "{{base_url}}/admin/area/deleteArea?aId=区域ID",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"admin",
 								"area",
@@ -573,12 +705,43 @@
 			"name": "用户管理(包含管理员和巡查员)",
 			"item": [
 				{
-					"name": "查询所有人员信息",
+					"name": "根据用户类型查询用户",
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": ""
+							"raw": "{{base_url}}/admin/user/queryUserByType?type=admin&pageNum=1&pageSize=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"user",
+								"queryUserByType"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "admin",
+									"description": "值固定为:admin 或者 patrol 可为空,为空则查询所有用户"
+								},
+								{
+									"key": "pageNum",
+									"value": "1",
+									"description": "第几页 默认为第一页"
+								},
+								{
+									"key": "pageSize",
+									"value": "15",
+									"description": "每页查询多少条 默认15条"
+								}
+							]
 						}
 					},
 					"response": []
@@ -586,10 +749,41 @@
 				{
 					"name": "新增人员",
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": ""
+							"raw": "{{base_url}}/admin/user/insertUser?type=patrol&username=ceshi2&password=1234567",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"user",
+								"insertUser"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "patrol",
+									"description": "只能为 admin 或 patrol (必填)"
+								},
+								{
+									"key": "username",
+									"value": "ceshi2",
+									"description": "用户名 (必填)"
+								},
+								{
+									"key": "password",
+									"value": "1234567",
+									"description": "密码 (必填)"
+								}
+							]
 						}
 					},
 					"response": []
@@ -597,7 +791,7 @@
 				{
 					"name": "更新人员信息",
 					"request": {
-						"method": "GET",
+						"method": "LOCK",
 						"header": [],
 						"url": {
 							"raw": ""
@@ -608,10 +802,31 @@
 				{
 					"name": "删除人员信息",
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": ""
+							"raw": "{{base_url}}/admin/user/deleteUser?uId=4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"user",
+								"deleteUser"
+							],
+							"query": [
+								{
+									"key": "uId",
+									"value": "4",
+									"description": "用户IDID (必填)"
+								}
+							]
 						}
 					},
 					"response": []
@@ -619,7 +834,7 @@
 				{
 					"name": "重置巡查员密码为123456",
 					"request": {
-						"method": "GET",
+						"method": "LOCK",
 						"header": [],
 						"url": {
 							"raw": ""
@@ -630,10 +845,41 @@
 				{
 					"name": "修改密码",
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": ""
+							"raw": "{{base_url}}/admin/user/updatePwdByUserId?uId=1&oldPwd=123456&newPwd=123456",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"user",
+								"updatePwdByUserId"
+							],
+							"query": [
+								{
+									"key": "uId",
+									"value": "1",
+									"description": "用户ID(必填)"
+								},
+								{
+									"key": "oldPwd",
+									"value": "123456",
+									"description": "旧密码(必填)"
+								},
+								{
+									"key": "newPwd",
+									"value": "123456",
+									"description": "新密码(必填)"
+								}
+							]
 						}
 					},
 					"response": []
@@ -661,6 +907,275 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "系统参数设置",
+			"item": [
+				{
+					"name": "人员聚集警告设置(人数)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/system_param?content=1&type=0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"system_param"
+							],
+							"query": [
+								{
+									"key": "content",
+									"value": "1",
+									"description": "内容 比如 1 2 单位根据type确定"
+								},
+								{
+									"key": "type",
+									"value": "0",
+									"description": "参数类型\n      0-人员聚集警告设置(人数)\n      1-停留时间过长警报设置(时间 min)\n      2-无回传警报设置(时间  min)\n      3-离开工作区域警报(时间 min)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "停留时间过长警报设置(时间)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/system_param?content=1&type=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"system_param"
+							],
+							"query": [
+								{
+									"key": "content",
+									"value": "1",
+									"description": "内容 比如 1 2 单位根据type确定"
+								},
+								{
+									"key": "type",
+									"value": "1",
+									"description": "参数类型\n      0-人员聚集警告设置(人数)\n      1-停留时间过长警报设置(时间 min)\n      2-无回传警报设置(时间  min)\n      3-离开工作区域警报(时间 min)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "无回传警报设置(时间)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/system_param?content=1&type=2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"system_param"
+							],
+							"query": [
+								{
+									"key": "content",
+									"value": "1",
+									"description": "内容 比如 1 2 单位根据type确定"
+								},
+								{
+									"key": "type",
+									"value": "2",
+									"description": "参数类型\n      0-人员聚集警告设置(人数)\n      1-停留时间过长警报设置(时间 min)\n      2-无回传警报设置(时间  min)\n      3-离开工作区域警报(时间 min)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "离开工作区域警报(时间)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/system_param?content=1&type=3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"system_param"
+							],
+							"query": [
+								{
+									"key": "content",
+									"value": "1",
+									"description": "内容 比如 1 2 单位根据type确定"
+								},
+								{
+									"key": "type",
+									"value": "3",
+									"description": "参数类型\n      0-人员聚集警告设置(人数)\n      1-停留时间过长警报设置(时间 min)\n      2-无回传警报设置(时间  min)\n      3-离开工作区域警报(时间 min)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询系统参数",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/admin/system_param/querySystemParam?type=0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"system_param",
+								"querySystemParam"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "0",
+									"description": "(必填)参数类型\n      0-人员聚集警告设置(人数)\n      1-停留时间过长警报设置(时间 min)\n      2-无回传警报设置(时间  min)\n      3-离开工作区域警报(时间 min)"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "考勤管理",
+			"item": [
+				{
+					"name": "查询人员考勤",
+					"request": {
+						"method": "LOCK",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}?areaId=1&uname=张三&date=2018-01-01",
+							"host": [
+								"{{base_url}}"
+							],
+							"query": [
+								{
+									"key": "areaId",
+									"value": "1",
+									"description": "区域ID"
+								},
+								{
+									"key": "uname",
+									"value": "张三",
+									"description": "用户名字  支持模糊查询"
+								},
+								{
+									"key": "date",
+									"value": "2018-01-01",
+									"description": "查询时间,某一天"
+								}
+							]
+						},
+						"description": "参数都可以为空,如果都为空则默认查询当天所有人的考勤情况"
+					},
+					"response": []
+				},
+				{
+					"name": "上下班打卡",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/patrol/attendance/punch?userId=2&lng=102.687800637&lat=25.04722319&type=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patrol",
+								"attendance",
+								"punch"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2",
+									"description": "用户ID"
+								},
+								{
+									"key": "lng",
+									"value": "102.687800637",
+									"description": "经度"
+								},
+								{
+									"key": "lat",
+									"value": "25.04722319",
+									"description": "纬度"
+								},
+								{
+									"key": "type",
+									"value": "1",
+									"description": "打卡类型 0-上班 1-下班"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "数据统计",
+			"item": []
 		}
 	]
 }

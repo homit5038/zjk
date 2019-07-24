@@ -1,18 +1,15 @@
 package com.it100000.config.shiro.realm;
 
+import com.it100000.config.jwt.JwtToken;
+import com.it100000.config.jwt.JwtUtil;
 import com.it100000.entity.Role;
 import com.it100000.entity.User;
 import com.it100000.service.UserService;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.context.annotation.Lazy;
 
 import javax.annotation.Resource;
@@ -30,14 +27,22 @@ public class CustomRealm extends AuthorizingRealm {
     @Resource
     private UserService userService;
 
+    /**
+     * 显式设置token为自定义的token
+     */
+    @Override
+    public boolean supports(AuthenticationToken token) {
+        return token instanceof JwtToken;
+    }
 
     /**
      * 获取授权信息
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        String token = (String)principals.getPrimaryPrincipal();
+        String uname = JwtUtil.getUsername(token);
 
-        String uname = ((User) principals.getPrimaryPrincipal()).getUsername();
         Set<String> roles = getRolesByUsername(uname);
         SimpleAuthorizationInfo authenticationInfo = new SimpleAuthorizationInfo();
         authenticationInfo.setRoles(roles);
@@ -71,31 +76,16 @@ public class CustomRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        String username = (String) token.getPrincipal();
-        User user = userService.queryUserInfoByUserName(username);
-        if (user == null) {
-            return null;
+        String uToken    = (String) token.getCredentials();
+        String username  = JwtUtil.getUsername(uToken);
+        User user        = userService.queryUserInfoByUserName(username);
+        if (user == null){
+            throw new UnknownAccountException("用户不存在");
         }
-        String password = user.getPassword();
-        SimpleAuthenticationInfo authenticationInfo =
-                new SimpleAuthenticationInfo(
-                        user,
-                        password.toCharArray(),
-                        ByteSource.Util.bytes(user.getSalt()),
-                        getName()
-                );
-        return authenticationInfo;
-    }
-
-
-
-    public static void main(String[] args) {
-        String pwd = "root";
-        String salt = "123";
-        String hashName = "MD5";
-        Integer hashNum = 10;
-        SimpleHash simpleHash = new SimpleHash(hashName, pwd, salt, hashNum);
-        System.out.println(simpleHash);
+        if (!JwtUtil.verify(uToken,username,user.getPassword())){
+            throw new CredentialsException("密码错误");
+        }
+        return new SimpleAuthenticationInfo(uToken,uToken,getName());
     }
 
 }

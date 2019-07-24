@@ -1,9 +1,11 @@
 package com.it100000.config.shiro;
 
+import com.it100000.config.jwt.JwtFilter;
 import com.it100000.config.shiro.filter.ShiroFormAuthenticationFilter;
 import com.it100000.config.shiro.realm.CustomRealm;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
+import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -41,29 +43,45 @@ public class ShiroConfiguration {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         // 注入自定义拦截器
         Map<String, Filter> filters = new HashMap<>(16);
-        filters.put("authc",shiroFormAuthenticationFilter());
+        filters.put("authc", shiroFormAuthenticationFilter());
+        filters.put("jwt",jwtFilter());
         shiroFilterFactoryBean.setFilters(filters);
 
         shiroFilterFactoryBean.setLoginUrl("/login");
         //Shiro的核心安全接口,这个属性是必须的
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/**", "jwt");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
 
     /**
      * 自定义拦截器
-     * @return
+     *
+     * @return SecurityManager
+     * @author 杨新杰
+     * @date 17:21 2019/5/27
      */
     @Bean
-    public ShiroFormAuthenticationFilter shiroFormAuthenticationFilter(){
+    public ShiroFormAuthenticationFilter shiroFormAuthenticationFilter() {
         return new ShiroFormAuthenticationFilter();
     }
 
     /**
-     * 功能说明:不指定名字的话，自动创建一个方法名第一个字母小写的bean
+     * JWT 拦截器
+     *
+     * @return jwt拦截器
+     * @author 杨新杰
+     * @date 17:21 2019/5/27
+     */
+    @Bean
+    public JwtFilter jwtFilter(){
+        return new JwtFilter();
+    }
+
+    /**
+     * 功能说明:shiro核心管理器
      *
      * @return SecurityManager
      * @author 杨新杰
@@ -71,8 +89,15 @@ public class ShiroConfiguration {
      **/
     @Bean(name = "securityManager")
     public SecurityManager securityManager(CustomRealm customRealm) {
-        log.info(">>>> 注入Shiro的securityManager" + ShiroFilterFactoryBean.class);
+        log.info(">>>> 注入Shiro的安全管理器" + ShiroFilterFactoryBean.class);
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        // 关闭默认Session
+        DefaultSessionStorageEvaluator evaluator = new DefaultSessionStorageEvaluator();
+        evaluator.setSessionStorageEnabled(false);
+        DefaultSubjectDAO subjectDAO = new DefaultSubjectDAO();
+        subjectDAO.setSessionStorageEvaluator(evaluator);
+        securityManager.setSubjectDAO(subjectDAO);
+
         securityManager.setRealm(customRealm);
         return securityManager;
     }
@@ -86,27 +111,8 @@ public class ShiroConfiguration {
      **/
     @Bean
     public CustomRealm customRealm() {
-        CustomRealm customRealm = new CustomRealm();
-        customRealm.setCredentialsMatcher(credentialsMatcher());
-        return customRealm;
+        return new CustomRealm();
     }
-
-    /**
-     * 功能说明:配置加密
-     *
-     * @return HashedCredentialsMatcher
-     * @author 杨新杰
-     * @date 17:28 2019/5/27
-     **/
-    @Bean
-    public HashedCredentialsMatcher credentialsMatcher() {
-        HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
-        matcher.setHashAlgorithmName("md5");
-        matcher.setHashIterations(10);
-        return matcher;
-    }
-
-
 
     /**
      * 功能说明:Shiro生命周期处理器
@@ -134,8 +140,6 @@ public class ShiroConfiguration {
     @DependsOn({"lifecycleBeanPostProcessor"})
     public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
         DefaultAdvisorAutoProxyCreator creator = new DefaultAdvisorAutoProxyCreator();
-        // 强制使用cglib，防止重复代理和可能引起代理出错的问题
-        // https://zhuanlan.zhihu.com/p/29161098
         creator.setProxyTargetClass(true);
         return creator;
     }
