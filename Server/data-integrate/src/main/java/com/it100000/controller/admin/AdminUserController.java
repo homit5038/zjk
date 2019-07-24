@@ -1,5 +1,7 @@
 package com.it100000.controller.admin;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.it100000.dto.BasicResult;
 import com.it100000.entity.User;
 import com.it100000.service.UserService;
@@ -8,11 +10,13 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 人员管理
@@ -40,8 +44,12 @@ public class AdminUserController {
      **/
     @RequiresRoles(value = "admin")
     @RequestMapping(value = "/queryUserByType", method = RequestMethod.POST)
-    public BasicResult queryUserByType(String type) {
-        return BasicResult.successResult(userService.queryUserByType(type));
+    public BasicResult queryUserByType(String type,
+                                       @RequestParam(defaultValue = "1") Integer pageNum,
+                                       @RequestParam(defaultValue = "15") Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<User> users = userService.queryUserByType(type);
+        return BasicResult.successResult(new PageInfo<>(users));
     }
 
     /**

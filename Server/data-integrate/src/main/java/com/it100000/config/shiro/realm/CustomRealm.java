@@ -30,6 +30,7 @@ public class CustomRealm extends AuthorizingRealm {
     @Resource
     private UserService userService;
 
+
     /**
      * 获取授权信息
      */

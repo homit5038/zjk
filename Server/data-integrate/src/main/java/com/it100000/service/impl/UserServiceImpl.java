@@ -133,7 +133,7 @@ public class UserServiceImpl implements UserService {
 
 
     /**
-     * 删除用户
+     * 修改密码
      *
      * @param uId    用户ID
      * @param oldPwd 旧密码
@@ -154,7 +154,7 @@ public class UserServiceImpl implements UserService {
         }
         // 加密密码
         String simStr = new SimpleHash("MD5", oldPwd, user.getSalt(), 10).toString();
-        if (!simStr.equals(user.getPassword())){
+        if (!simStr.equals(user.getPassword())) {
             return "旧密码不正确";
         }
         // 设置新密码

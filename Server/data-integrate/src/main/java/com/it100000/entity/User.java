@@ -15,6 +15,12 @@ public class User implements Serializable {
     private Integer id;
 
     /**
+     * 真实姓名
+     */
+    @Column(name = "`actual name`")
+    private String actualName;
+
+    /**
      * 登陆名称(最低6位-最高16位
      */
     @Column(name = "username")
@@ -59,6 +65,7 @@ public class User implements Serializable {
         }
         User other = (User) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+            && (this.getActualName() == null ? other.getActualName() == null : this.getActualName().equals(other.getActualName()))
             && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
             && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
             && (this.getSalt() == null ? other.getSalt() == null : this.getSalt().equals(other.getSalt()))
@@ -71,6 +78,7 @@ public class User implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getActualName() == null) ? 0 : getActualName().hashCode());
         result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
         result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
         result = prime * result + ((getSalt() == null) ? 0 : getSalt().hashCode());
@@ -86,6 +94,7 @@ public class User implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", actualName=").append(actualName);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
         sb.append(", salt=").append(salt);

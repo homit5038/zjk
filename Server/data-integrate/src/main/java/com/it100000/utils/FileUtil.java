@@ -16,6 +16,10 @@ import java.util.Random;
  */
 public class FileUtil {
 
+    public static void main(String[] args) {
+        System.out.println(getRandomFileName());
+    }
+
     /**
      * 生成随机文件名：当前年月日时分秒+五位随机数
      *

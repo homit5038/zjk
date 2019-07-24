@@ -1,5 +1,6 @@
 package com.it100000.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.it100000.dao.AreaMapper;
 import com.it100000.entity.Area;
 import com.it100000.service.AreaService;
@@ -32,9 +33,12 @@ public class AreaServiceImpl implements AreaService {
      **/
     @Override
     public List<Area> queryAreaAll() {
+
         Example e = new Example(Area.class);
         TkUtils.AddDefaultQuery(e);
-        return areaMapper.selectByExample(e);
+        List<Area> lA =  areaMapper.selectByExample(e);
+
+        return lA;
     }
 
     /**

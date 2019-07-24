@@ -19,6 +19,7 @@ public class TkUtils {
      * @date 2019/7/22 16:07
      **/
     public static Example.Criteria AddDefaultQuery(Example e) {
+        e.setOrderByClause("id ASC");
         Example.Criteria criteria = e.createCriteria();
         criteria.andCondition("is_del=", Boolean.FALSE);
         criteria.andCondition("is_enable=", Boolean.TRUE);

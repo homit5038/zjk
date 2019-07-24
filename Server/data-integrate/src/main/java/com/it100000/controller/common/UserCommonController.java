@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotBlank;
-import java.math.BigDecimal;
 
 /**
  * @author 杨新杰
@@ -36,7 +35,7 @@ public class UserCommonController {
     public BasicResult login(@NotBlank(message = "用户名不能为空") String username,
                              @NotBlank(message = "密码不能为空") String password) {
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username,password,true);
+        UsernamePasswordToken token = new UsernamePasswordToken(username,password);
         subject.login(token);
         log.info("用户:" + username +"登陆,登陆状态:" + subject.isAuthenticated());
         // 设置返回的信息,把密码和salt设置为空

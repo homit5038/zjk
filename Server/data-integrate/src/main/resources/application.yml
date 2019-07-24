@@ -1,4 +1,10 @@
 spring:
+  servlet:
+    # 文件上传大小限制 -1为不限制
+    multipart:
+      max-file-size: 31457280
+      max-request-size: 31457280
+  # 数据库配置
   datasource:
     druid:
       url: jdbc:mysql://localhost:3306/data-integrate?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
@@ -14,8 +20,15 @@ spring:
       stat-view-servlet:
         login-username: root
         login-password: root
+# mybatis配置
 mybatis:
   type-aliases-package: com.it100000.eneity
   mapper-locations: classpath:mybatis/mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+# 分页插件配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

@@ -1,5 +1,7 @@
 package com.it100000.controller.admin;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.it100000.dto.BasicResult;
 import com.it100000.entity.LegalCase;
 import com.it100000.entity.LegalCaseType;
@@ -9,6 +11,7 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -41,12 +44,14 @@ public class AdminLegalCaseTypeController {
      **/
     @RequiresRoles(value = "admin")
     @RequestMapping(value = "/queryLegalCaseTypeAll", method = RequestMethod.POST)
-    public BasicResult queryLegalCaseTypeAll() {
+    public BasicResult queryLegalCaseTypeAll(@RequestParam(defaultValue = "1") Integer pageNum,
+                                             @RequestParam(defaultValue = "15") Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         List<LegalCaseType> legalCaseTypes = legalCaseService.selectLegalCaseTypeAll();
         if (legalCaseTypes.size() <= 0) {
             return BasicResult.successResult();
         }
-        return BasicResult.successResult(legalCaseTypes);
+        return BasicResult.successResult(new PageInfo<>(legalCaseTypes));
     }
 
     /**
@@ -112,12 +117,15 @@ public class AdminLegalCaseTypeController {
      **/
     @RequiresRoles(value = "admin")
     @RequestMapping(value = "/queryLegalCaseAll", method = RequestMethod.POST)
-    public BasicResult queryLegalCaseAll() {
-        List<LegalCase> LegalCases = legalCaseService.selectLegalCaseAll();
-        if (LegalCases.size() <= 0) {
+    public BasicResult queryLegalCaseAll(@RequestParam(defaultValue = "1") Integer pageNum,
+                                         @RequestParam(defaultValue = "15") Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<LegalCase> legalCases = legalCaseService.selectLegalCaseAll();
+        if (legalCases.size() <= 0) {
             return BasicResult.successResult();
         }
-        return BasicResult.successResult(LegalCases);
+        PageInfo<LegalCase> pInfo = new PageInfo<>(legalCases);
+        return BasicResult.successResult(pInfo);
     }
 
     /**

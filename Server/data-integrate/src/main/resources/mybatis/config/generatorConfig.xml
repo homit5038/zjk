@@ -43,7 +43,7 @@
         <javaClientGenerator targetPackage="com.it100000.dao" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <!-- 配置需要指定生成的数据库和表，% 代表所有表 -->
-        <table tableName="t_user_position" catalog="data-integrate">
+        <table tableName="t_user" catalog="data-integrate">
             <!-- 默认为false，如果设置为true，在生成的SQL中，table名字不会加上catalog或schema； -->
             <property name="ignoreQualifiersAtRuntime" value="true"/>
             <!-- 如果设置了runtimeCatalog，那么在生成的SQL中，使用该指定的catalog，而不是table元素上的catalog -->

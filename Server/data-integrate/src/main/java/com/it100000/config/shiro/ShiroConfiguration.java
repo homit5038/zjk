@@ -8,9 +8,7 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,7 +40,6 @@ public class ShiroConfiguration {
         log.info(">>>> 注入Shiro的shiroFilter" + ShiroFilterFactoryBean.class);
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         // 注入自定义拦截器
-
         Map<String, Filter> filters = new HashMap<>(16);
         filters.put("authc",shiroFormAuthenticationFilter());
         shiroFilterFactoryBean.setFilters(filters);
@@ -55,7 +52,6 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
-
 
     /**
      * 自定义拦截器
@@ -78,10 +74,9 @@ public class ShiroConfiguration {
         log.info(">>>> 注入Shiro的securityManager" + ShiroFilterFactoryBean.class);
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(customRealm);
-        // 注入记住我
-        securityManager.setRememberMeManager(cookieRememberMeManager());
         return securityManager;
     }
+
 
     /**
      * 功能说明:自定义的Realm
@@ -111,29 +106,6 @@ public class ShiroConfiguration {
         return matcher;
     }
 
-    /**
-     * 设置记住我
-     *
-     * @return 返回配置好的记住我
-     * @author 杨新杰
-     * @date 0:01 2019/5/31
-     **/
-    @Bean
-    public CookieRememberMeManager cookieRememberMeManager() {
-        CookieRememberMeManager rememberMeManager = new CookieRememberMeManager();
-        rememberMeManager.setCookie(simpleCookie());
-        return rememberMeManager;
-    }
-
-    @Bean
-    public SimpleCookie simpleCookie() {
-        SimpleCookie cookie = new SimpleCookie();
-        cookie.setName("rememberMe");
-        // 单位为秒 当前设置为一天
-        cookie.setMaxAge(60 * 60 * 24);
-        cookie.setHttpOnly(true);
-        return cookie;
-    }
 
 
     /**

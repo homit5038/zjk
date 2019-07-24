@@ -1,13 +1,17 @@
 package com.it100000.controller.admin;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.it100000.dto.BasicResult;
 import com.it100000.entity.Area;
 import com.it100000.service.AreaService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -31,18 +35,24 @@ public class AdminAreaController {
     /**
      * 查询所有区域
      *
+     * @param pageNum  第几页
+     * @param pageSize 查询多少条
      * @return com.it100000.dto.BasicResult
      * @author 杨新杰
      * @date 2019/7/22 14:41
      **/
-    @RequiresRoles(value = "admin")
+//    @RequiresRoles(value = "admin")
+    @RequiresUser
     @RequestMapping(value = "/queryAreaAll", method = RequestMethod.POST)
-    public BasicResult queryAreaAll() {
+    public BasicResult queryAreaAll(@RequestParam(defaultValue = "1") Integer pageNum,
+                                    @RequestParam(defaultValue = "15") Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         List<Area> legalCaseTypes = areaService.queryAreaAll();
         if (legalCaseTypes.size() <= 0) {
             return BasicResult.successResult();
         }
-        return BasicResult.successResult(legalCaseTypes);
+        PageInfo<Area> pInfo = new PageInfo<>(legalCaseTypes);
+        return BasicResult.successResult(pInfo);
     }
 
     /**
