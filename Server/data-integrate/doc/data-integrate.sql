@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80014
 File Encoding         : 65001
 
-Date: 2019-07-24 23:23:32
+Date: 2019-07-24 23:37:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -57,13 +57,15 @@ CREATE TABLE `t_attendance` (
   `lat` decimal(20,15) DEFAULT NULL COMMENT '纬度',
   `type` int(1) DEFAULT NULL COMMENT '打卡类型 0-上班卡 1-下班卡',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='考勤表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='考勤表';
 
 -- ----------------------------
 -- Records of t_attendance
 -- ----------------------------
 INSERT INTO `t_attendance` VALUES ('1', '2', '2019-07-23 15:31:12', '102.687800637000000', '25.047223190000000', '0');
 INSERT INTO `t_attendance` VALUES ('2', '2', '2019-07-23 15:31:48', '102.687800637000000', '25.047223190000000', '1');
+INSERT INTO `t_attendance` VALUES ('3', '2', '2019-07-24 23:35:47', '102.687800637000000', '25.047223190000000', '0');
+INSERT INTO `t_attendance` VALUES ('4', '2', '2019-07-24 23:35:51', '102.687800637000000', '25.047223190000000', '1');
 
 -- ----------------------------
 -- Table structure for t_legal_case

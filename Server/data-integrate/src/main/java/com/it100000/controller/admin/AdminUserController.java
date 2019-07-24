@@ -49,6 +49,9 @@ public class AdminUserController {
                                        @RequestParam(defaultValue = "15") Integer pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         List<User> users = userService.queryUserByType(type);
+        for (User u : users){
+            u.setPassword(null);
+        }
         return BasicResult.successResult(new PageInfo<>(users));
     }
 

@@ -16,8 +16,12 @@ import java.util.Date;
  */
 @Slf4j
 public class JwtUtil {
-    /** 过期时间30天 */
-    private static final long EXPIRE_TIME = 24 * 60 * 30 * 1000;
+    /**
+     * 过期时间30天
+     */
+    private static final long EXPIRE_TIME = 24 * 60 * 1000 * 30;
+
+    // 1000 * 60 * 60 * 24
 
     /**
      * 校验token是否正确
@@ -30,7 +34,6 @@ public class JwtUtil {
     public static boolean verify(String token, String username, String password) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(password);
-            log.info("algorithm:" + algorithm.toString());
             JWTVerifier verifier = JWT.require(algorithm).withClaim("username", username).build();
             DecodedJWT jwt = verifier.verify(token);
             return true;
