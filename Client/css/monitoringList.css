@@ -1,0 +1,189 @@
+/*css样式初始化*/
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
+body{font:12px"宋体","Arial Narrow",HELVETICA;background:#fff;-webkit-text-size-adjust:100%;}
+a{color:#2d374b;text-decoration:none}
+a:hover{color:#cd0200;text-decoration:underline}
+em{font-style:normal}
+li{list-style:none}
+img{border:0;vertical-align:middle}
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word}
+/*baiduMap*/
+html{height:100%}
+body{height:100%;margin:0px;padding:0px}
+#container{height:100%;z-index: -1}
+/*my content*/
+.left-top{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 418px;
+    height:188px;
+}
+.title-zh{
+    margin-left: 63px;
+    margin-top: 63px;
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+}
+.title-en{
+    margin-left: 63px;
+    margin-top: 7px;
+    font-size: 24px;
+    color: rgb(96, 108, 116);
+    line-height: 1.2;
+}
+.left-list{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 418px;
+    height:892px;
+
+}
+.search-box{
+    position: relative;
+    top: 31px;
+    left:18px;
+    width: 382px;
+    height: 40px;
+    background-color: rgb(11, 77, 153);
+    border-radius: 4px;
+}
+.search-box input{
+    position: absolute;
+    padding: 12px 5px;
+    width: 382px;
+    height: 40px;
+    background-color: rgb(11, 77, 153);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.search-box span{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+
+}
+.search-history{
+    position: relative;
+    display: none;
+    width: 380px;
+    left:18px;
+    top: 31px;
+    border-width: 1px;
+    border-color: rgb(18, 124, 244);
+    border-style: solid;
+    border-radius: 4px;
+    background-color: rgb(5, 33, 73);
+
+}
+.search-history p{
+    font-size: 14px;
+    color: rgb(139, 170, 250);
+    line-height: 1.2;
+    position: relative;
+    left: 10px;
+    top: 5px;
+
+}
+.search-history ul{
+    margin-top: 10px;
+    width: 380px;
+    position: relative;
+}
+.search-history ul li{
+    font-size: 14px;
+    color: rgb(139, 170, 250);
+    padding-left: 10px;
+    margin-top: 6px;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    box-sizing: border-box;
+
+}
+.search-history ul li:hover{
+    background-color: rgb(18, 124, 242);
+}
+.address-list ul{
+    position: relative;
+
+    font-size: 16px;
+    color: rgb(209, 233, 255);
+    line-height: 1.2;
+
+    left: 26px;
+    top: 46px;
+    margin-top: 20px;
+    cursor: pointer;
+
+}
+.address-list ul li{
+    position: relative;
+    font-size: 14px;
+    color: rgb(209, 233, 255);
+    line-height: 1.2;
+    left: 30px;
+    top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.address-list ul li:hover{
+    color: rgb(18, 167, 244);
+}
+.right{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 480px;
+    height:1080px;
+}
+.right-text-zh{
+    margin-left:105px;
+    margin-top: 61px;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.2;
+}
+.right-text-en{
+    margin-left: 105px;
+    margin-top: 7px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.2;
+}
+
+.right-video-list{
+    position: relative;
+    height: 842px;
+    margin-left: 94px;
+    margin-top: 48px;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+/*.right-video-list::-webkit-scrollbar{
+    display: none;
+}*/
+.right-video-list ul li{
+    margin-left:11px;
+    margin-top: 8px;
+    float: left;
+    width: 162px;
+    height: 112px;
+    background-color: lightseagreen;
+}
+.right-video-list ul li p{
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+}
+
+.clear{
+    clear: both;
+}
+

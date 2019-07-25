@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>capture screen</title>
+</head>
+<body>
+<video id="video" controls="controls" width="640px" height="480">
+    你的浏览器貌似不支持video 元素 %>_<%
+    <source src="../image/1.mp4">
+</video>
+<div id="output"></div>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.js"></script>
+<script type="text/javascript">
+    var mysrc,captureImage,timeSet=0;
+    (function(){
+        var video, output;
+        var scale = 0.8;
+        var initialize = function() {
+            output = document.getElementById("output");
+            video = document.getElementById("video");
+            video.addEventListener('loadeddata',captureImage);
+        };
+
+
+        captureImage = function() {
+            var canvas = document.createElement("canvas");
+            canvas.width = video.videoWidth * scale;
+            canvas.height = video.videoHeight * scale;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            var img = document.createElement("img");
+            img.src = canvas.toDataURL("image/png");
+            mysrc=img.src;
+            output.appendChild(img);
+
+        };
+
+        initialize();
+
+
+    })();
+    /*下载截图*/
+    var saveFile = function(data, filename){
+        var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+        save_link.href = data;
+        save_link.download = filename;
+
+        var event = document.createEvent('MouseEvents');
+        event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        save_link.dispatchEvent(event);
+    };
+
+    //随机产生n位数
+    function RndNum(n){
+        var rnd="";
+        for(var i=0;i<n;i++)
+            rnd+=Math.floor(Math.random()*10);
+        return rnd;
+    }
+
+    //开始播放后，每隔一段时间截一次图
+    window.onload=function () {
+
+        var video = document.getElementById("video");
+        /*video.oncanplay=function(){
+            $("#playimg").show();
+            $("#video").attr("poster","");
+        }*/
+        video.onplay=function () {
+            console.log("已经开始播放了");
+            var interval=setInterval(function () {
+                timeSet++;
+                captureImage();
+                var myDate=new Date();
+                var fileName=myDate.getFullYear().toString()+(myDate.getMonth()+1).toString()
+                    +myDate.getDate().toString() +myDate.getHours().toString()
+                    +myDate.getMinutes().toString()+myDate.getSeconds().toString()+RndNum(5);
+                saveFile(mysrc,fileName);
+                //截三张图
+                if(timeSet==3){
+                    clearInterval(interval);
+                }
+            },5000)
+        }
+
+    };
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,804 @@
+/*css样式初始化*/
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
+body{font:12px"宋体","Arial Narrow",HELVETICA;background:#fff;-webkit-text-size-adjust:100%;}
+a{color:#2d374b;text-decoration:none}
+a:hover{color:#cd0200;text-decoration:none}
+em{font-style:normal}
+li{list-style:none}
+img{border:0;vertical-align:middle}
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word}
+/*baiduMap*/
+html{height:100%}
+body{height:100%;margin:0px;padding:0px}
+#container{height:100%;z-index: -1}
+
+@font-face {
+    font-family: 'UnidreamLED';
+    src:url(../fonts/UnidreamLED/UnidreamLED.eot); /***兼容ie9***/
+    src:url(../fonts/UnidreamLED/UnidreamLED.eot?#iefix)format('embedded-opentype'), /***兼容ie6-ie8***/
+    url('../fonts/UnidreamLED/UnidreamLED.woff') format('woff'),
+    local('UnidreamLED'), url("../fonts/UnidreamLED/UnidreamLED.woff");/***默认使用本地的***/
+}
+
+/*my-content*/
+.my-title-zh{
+    font-size: 36px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    position: absolute;
+    left: 53.7px;
+    top: 56.057px;
+
+}
+.my-title-en{
+    font-size: 24px;
+    font-family: "微软雅黑";
+    color: rgb(96, 108, 116);
+    line-height: 1.2;
+    position: absolute;
+    left: 56.837px;
+    top: 98.792px;
+
+}
+.num-ratio{
+    width: 580px;
+    height: 161px;
+    position: absolute;
+    left: 56.36px;
+    top: 172.657px;
+}
+.num-ratio-p{
+    font-size: 24px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    position: relative;
+    left: 1px;
+    top: 1px;
+
+}
+.num-ratio-div{
+
+    float: left;
+
+}
+.num-ratio-div span{
+    font-size: 82px;
+    font-family: "UnidreamLED";
+    color: rgb(31, 242, 140);
+    line-height: 1.2;
+    margin-right: 40px;
+
+}
+.num-ratio-div p{
+    font-size: 18px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    margin-right: 40px;
+}
+.num-ratio-list{
+
+    border-radius: 2px;
+    position: absolute;
+    left: 52px;
+    top: 361px;
+    width: 626px;
+    height: 310px;
+}
+.num-ratio-list-bg{
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 626px;
+    height: 310px;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.4;
+    z-index: 2;
+}
+.num-ratio-list-fg{
+    left: 0;
+    top: 0;
+    color: white;
+    font-size: 36px;
+    z-index: 5;
+    position: absolute;
+    width: 626px;
+    height: 310px;
+}
+.num-ratio-list-fg span{
+    font-size: 20px;
+    font-family: "微软雅黑";
+    color: rgb(31, 242, 140);
+    line-height: 1.2;
+
+}
+.num-ratio-list-fg p{
+
+    font-size: 24px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.2;
+
+}
+.num-ratio-list-fg-left{
+    float: left;
+    margin-left: 24px;
+    margin-top: -10px;
+}
+.num-ratio-list-fg-right{
+    float: right;
+    width: 90px;
+    height: 260px;
+    margin-right: 10px;
+    margin-top: -10px;
+}
+.num-ratio-block{
+    margin-top: 30px;
+}
+.span-border{
+    font-size: 14px;
+    font-family: "微软雅黑";
+
+    line-height: 1.2;
+
+}
+.num-ratio-list-fg-middle{
+    position: absolute;
+    left: 170px;
+    top: 20px;
+}
+.area-table-head{
+    position: absolute;
+    left: 52px;
+    top: 716px;
+    width: 626px;
+    height: 50px;
+}
+.now-area{
+    border-radius: 1px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    width: 174px;
+    height: 22px;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(51, 51, 51);
+    line-height: 1.2;
+    text-align: center;
+
+}
+.admin-name{
+    border-radius: 1px;
+    background-color: rgb(0, 254, 255);
+    position: absolute;
+    left: 220px;
+    top: 0;
+    width: 100px;
+    height: 22px;
+    font-size: 16px;
+    font-family: "PingFang";
+    color: rgb(51, 51, 51);
+    line-height: 1.2;
+    text-align: center;
+}
+.attendance{
+    border-radius: 1px;
+    background-color: rgb(0, 254, 255);
+    position: absolute;
+    left: 330px;
+    top: 0;
+    width: 80px;
+    height: 22px;
+    font-size: 16px;
+    font-family: "PingFang";
+    color: rgb(51, 51, 51);
+    line-height: 1.2;
+    text-align: center;
+}
+.now-timer {
+    border-radius: 1px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 160px;
+    height: 22px;
+}
+.now-timer div{
+    border-radius: 1px;
+    background-color: rgb(255, 223, 0);
+    width: 36px;
+    height: 22px;
+    float: left;
+    margin-left: 10px;
+    font-size: 16px;
+    font-family: "PingFang";
+    color: rgb(51, 51, 51);
+    line-height: 1.2;
+    text-align: center;
+}
+
+.area-table-body{
+    border-radius: 2px;
+    position: absolute;
+    left: 52px;
+    top: 763px;
+    width: 626px;
+    height: 266px;
+}
+.area-table-body-bg{
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 626px;
+    height: 266px;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.4;
+    z-index: 1;
+}
+.area-table-body-fg{
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 626px;
+    height: 266px;
+    z-index: 2;
+}
+.area-table-body-fg table{
+    margin-top: 20px;
+    text-align: center;
+    width:626px ;
+    border-collapse: separate;
+    border-spacing: 5px 18px;  /* 水平间距 垂直间距 */
+
+}
+.area-table-td1{
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+
+}
+.area-table-td2 {
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(0, 254, 255);
+    line-height: 1.2;
+
+}
+.area-table-td4{
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 223, 0);
+    line-height: 1.2;
+
+}
+.tab-li{
+    position: absolute;
+    left: 608px;
+    top: 72px;
+    width: 200px;
+    height: 30px;
+}
+.tab-li div{
+    float: left;
+    font-size: 22px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    z-index: 138;
+    margin-left: 30px;
+    transition: all 500ms linear 0ms;
+}
+.tab-li div:hover{
+    cursor: pointer;
+    padding-bottom: 5px;
+    border-radius: 5%;
+    border-bottom: 3px #33FCFF solid;
+}
+.weather{
+    border-radius: 2px;
+    position: absolute;
+    right: 100px;
+    top: 77px;
+    width: 490px;
+}
+.weather ul{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+}
+.weather ul li{
+
+    font-size: 22px;
+    float: left;
+    margin-right: 20px;
+}
+.shutdown-weather{
+    margin-top: 1px;
+    font-size: 16px;
+    margin-left: 20px;
+    background-color: rgba(1, 253, 255,0.3);
+    padding: 5px;
+    border-radius: 2px;
+    transition: all 500ms linear 0ms;
+}
+.shutdown-weather:hover{
+    cursor: pointer;
+    background-color: rgba(1, 253, 255,0.8);
+}
+.shutdown-weather:active{
+    background-color: rgba(1, 253, 255,0.3);
+}
+.gps-info{
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0,0.541);
+    position: absolute;
+    left: 1572px;
+    top: 176px;
+    width: 290px;
+    height: 160px;
+
+}
+.gps-info-title{
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: rgb(20, 24, 28);
+    line-height: 1.2;
+    background-color: rgb(249, 209, 0);
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 85px;
+    height: 18px;
+    text-align: center;
+}
+.gps-info-line{
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255,0.722);
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    width: 270px;
+    height: 2px;
+
+}
+.gps-info p{
+    font-size: 18px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    position: absolute;
+    left: 10px;
+    top: 45px;
+
+}
+.gps-info-time{
+    font-size: 50px;
+    font-family: "UnidreamLED";
+    color: rgb(20, 24, 28);
+    line-height: 1.2;
+    background-color: rgb(249, 209, 0);
+    position: absolute;
+    left: 10px;
+    top: 70px;
+    width: 270px;
+    height: 60px;
+    text-align: center;
+}
+.work-in-num{
+    line-height: 1.2;
+    position: absolute;
+    right: 10px;
+    top: 142px;
+}
+.work-in-num-span1{
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+}
+.work-in-num-span2{
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: rgb(31, 242, 140);
+}
+.work-in-attention{
+    background-color: rgba(0, 0, 0,0.4);
+    position: absolute;
+    left: 1666px;
+    top: 376px;
+    width: 196px;
+    height: 58px;
+}
+.work-attention-img{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.work-in-attention-div{
+    position: absolute;
+    font-size: 48px;
+    font-family: "微软雅黑";
+    color: rgb(1, 253, 255);
+    line-height: 1.2;
+    left: 10px;
+    top: 0;
+
+}
+.work-leave-attention{
+    background-color: rgba(0, 0, 0,0.4);
+    position: absolute;
+    left: 1666px;
+    top: 464px;
+    width: 196px;
+    height: 58px;
+
+}
+.work-leave-attention-div{
+    position: absolute;
+    font-size: 48px;
+    font-family: "微软雅黑";
+    color: #F3D501;
+    line-height: 1.2;
+    left: 10px;
+    top: 0;
+
+}
+.work-gather-attention{
+    background-color: rgba(0, 0, 0,0.4);
+    position: absolute;
+    left: 1666px;
+    top: 552px;
+    width: 196px;
+    height: 58px;
+
+}
+.work-attention-span{
+    font-size: 15px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+}
+.work-attention-p{
+    font-size: 13px;
+    font-family: "微软雅黑";
+    line-height: 1.2;
+    position: absolute;
+    left: 100px;
+    bottom: 10px;
+    color: white;
+}
+.number-icon{
+    position: absolute;
+    right: -6px;
+    top: -6px;
+    z-index: 6;
+}
+
+.number-icon p{
+    position: absolute;
+    right: 6px;
+    top: 2px;
+    font-size: 10px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+}
+.number-icon p:hover{
+    cursor: pointer;
+}
+.number-icon p:active{
+    color: rgba(255, 255, 255,0.5);
+}
+
+.safe-color{
+    color: #1FF28C;
+}
+.warn-color{
+    color: #F34432;
+}
+.attention-modal{
+    background-color: rgba(54, 53, 51,0.902);
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 396px;
+    height: 1080px;
+    z-index: 10;
+    display: none;
+}
+.attention-modal-img{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+.attention-modal-p{
+    font-size: 24px;
+    position: relative;
+    font-family: "微软雅黑";
+    line-height: 1.2;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.attention-modal-div{
+    position: relative;
+    background-color: rgb(70, 69, 66);
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 364px;
+
+}
+.attention-modal-div p{
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.2;
+    margin-left: 10px;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+.attention-modal-div div{
+    position: relative;
+    width: 300px;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(187, 187, 187);
+    line-height: 1.2;
+    margin-left: 10px;
+    padding: 10px 10px 10px 5px;
+    text-align: left;
+    /*溢出内容带上省略号*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*white-space: normal;*/
+    white-space: nowrap;
+}
+.attention-modal-div img{
+    position: absolute;
+    right: 10px;
+    top:20px;
+    cursor: pointer;
+}
+.search-modal{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15,25,35,0.95);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 11;
+    display: block;
+}
+.shutdown-search-modal{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+    cursor: pointer;
+}
+.search-modal-box{
+    border-radius: 4px;
+    background-color: rgb(15, 25, 38);
+    opacity: 0.8;
+    position: absolute;
+    left: 304px;
+    top: 93px;
+    width: 1311px;
+    height: 843px;
+    box-shadow: rgb(11, 234, 235) 0 0 18px inset;
+}
+.search-title img{
+    position: absolute;
+    left: 40px;
+    top: 45px;
+}
+.search-title p{
+    position: absolute;
+    left: 75px;
+    top: 40px;
+    font-size: 24px;
+    font-family: "微软雅黑";
+    color: rgb(31, 242, 140);
+    line-height: 1.2;
+
+}
+.condition-list{
+    position: relative;
+    margin-left: 75px;
+    margin-top: 40px;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+}
+.condition-list-area{
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    position: absolute;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255,0.239);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);
+    left: 400px;
+    width: 190px;
+    height: 40px;
+    padding:5px 10px;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+.condition-list-area option,.condition-list-person option{
+    background-color:#3C454F;
+}
+/*.condition-list-areatest{
+    float: left;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255,0.239);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);
+    margin-left: 50px;
+    width: 190px;
+    height: 40px;
+    padding:10px 10px;
+    box-sizing: border-box;
+    text-align: left;
+    border: 1px green solid;
+
+}*/
+.condition-list-person{
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    left:610px;
+    width: 130px;
+    position: absolute;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255,0.239);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);
+    height: 40px;
+    padding:5px 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.condition-list-time{
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    left:760px;
+    width: 190px;
+    position: absolute;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255,0.239);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);
+
+    height: 40px;
+    padding:5px 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.condition-img{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+    transform: rotate(0deg);
+}
+.search-modal-input{
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255,0.239);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.08);
+    position: absolute;
+    right: 40px;
+    width: 220px;
+    height: 40px;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.search-modal-input img{
+    cursor: pointer;
+}
+.search-modal-input input{
+    background-color: rgba(255, 255, 255,0.239);
+    height: 26px;
+}
+.search-modal-input input:hover{
+    background-color: rgb(255, 255, 255);
+}
+.search-modal-input::-webkit-input-placeholder{
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+
+}
+.person-info-table{
+    position: absolute;
+    top: 120px;
+    left: 45px;
+    width: 1220px;
+    height: 620px;
+}
+.person-info-table table{
+    width: 1220px;
+    text-align: center;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    border-collapse:separate;
+    border-spacing:0 15px;
+}
+.person-info-table table td{
+    height: 40px;
+}
+.person-info-table table tr:hover{
+    background-color: rgba(31, 242, 140,0.39);
+    cursor: pointer;
+}
+.paging-bar{
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 530px;
+    height: 40px;
+
+}
+.paging-bar ul li{
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    float: left;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255,0.239);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.12);
+    margin-left: 10px;
+
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+.paging-bar ul li:hover{
+    background-color: rgba(31, 242, 140,0.561);
+}
+.paging-bar ul li a{
+    color: rgb(255, 255, 255);
+}
+
+.paging-bar div{
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(204, 204, 204);
+    line-height: 1.2;
+
+}
+.paging-bar div input{
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255,0.239);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.12);
+    width: 72px;
+    height: 36px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.clear{
+    clear: both;
+}

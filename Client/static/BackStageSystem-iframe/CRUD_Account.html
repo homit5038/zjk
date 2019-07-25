@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户账户操作</title>
+    <link rel="stylesheet" href="../../lib/layui-v2.5.4/layui/css/layui.css">
+</head>
+<body style="width: 1650px;height: 820px">
+<div class="demoTable">
+    搜索ID：
+    <div class="layui-inline">
+        <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload">搜索</button>
+</div>
+
+<table class="layui-hide" id="test" lay-filter="test"></table>
+
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    </div>
+</script>
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script src="../../lib/layui-v2.5.4/layui/layui.js"></script>
+<script>
+
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+            elem: '#test'
+            ,url:'../../lib/tsconfig.json'
+            ,toolbar: '#toolbarDemo'
+            ,title: '用户数据表'
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计'}
+                ,{field:'username', title:'用户名', width:120, event:"set_username", style:'cursor: pointer;'}
+                ,{field:'sex', title:'性别', width:80,  sort: true,event:"set_sex", style:'cursor: pointer;'}
+                ,{field:'city', title:'城市', width:100}
+                ,{field:'sign', title:'签名'}
+                ,{field:'experience', title:'积分', width:80, sort: true, totalRow: true}
+                ,{field:'logins', title:'登入次数', width:100, sort: true, totalRow: true}
+                ,{field:'wealth', width:137, title: '财富', sort: true}
+                ,{field:'classify', title: '职业'}
+                ,{field:'score', title: '评分', sort: true}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+            ]]
+            ,page: true
+        });
+
+
+        var $ = layui.$, active = {
+            reload: function(){
+                var demoReload = $('#demoReload');
+
+                //执行重载
+                table.reload('testReload', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    ,where: {
+                        key: {
+                            id: demoReload.val()
+                        }
+                    }
+                }, 'data');
+            }
+        };
+
+        $('.demoTable .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        //头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+            };
+        });
+
+
+        //监听行工具事件
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                layer.prompt({
+                    formType: 2
+                    ,value: "用户名："+data.username+"性别:"+data.sex
+                }, function(value, index){
+                    obj.update({
+                        email: value
+                    });
+                    layer.close(index);
+                });
+            }else if(obj.event==="set_username"){
+                layer.prompt({
+                    formType: 2
+                    ,title: '修改 ID 为 ['+ data.id +'] 的用户名'
+                    ,value: data.username
+                }, function(value, index){
+                    layer.close(index);
+
+                    //这里一般是发送修改的Ajax请求
+
+                    //同步更新表格和缓存对应的值
+                    obj.update({
+                        username: value
+                    });
+                });
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

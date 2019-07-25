@@ -1,0 +1,70 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url("../image/login_bg.png");
+}
+
+.my-content {
+    margin-top: 30%;
+    width: 1040px;
+    height: 680px;
+    /*border-radius: 5px;*/
+    box-shadow: rgba(0,0,0,.5) 0 0 50px;
+}
+
+.login-title {
+    font-size: 22px;
+    font-family: "微软雅黑";
+    color: rgb(77, 161, 255);
+    line-height: 1.2;
+    margin-left: 45%;
+    margin-top: 35%;
+
+}
+
+.login-form {
+    float: left;
+    width: 520px;
+    height: 680px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.login-form-detail {
+    margin-left: 13%;
+    margin-top: 15%;
+}
+
+.btn-radius{
+    border-radius: 16px;
+}
+
+.bgi {
+    background-image: url("../image/login_bg8_02.png");
+}
+.login-logo{
+    position: absolute;
+    margin-top: 20%;
+    margin-left: 30%;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    background-color: yellow;
+}
+.login-headline{
+    margin-left: 18%;
+    margin-top: 90%;
+    width: 350px;
+    height: 80px;
+    text-align: center;
+}
+.login-headline-p{
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+}
+.text-14px{
+    font-size: 14px;
+}

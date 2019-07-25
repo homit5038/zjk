@@ -1,0 +1,273 @@
+/*css样式初始化*/
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
+body{font:12px"宋体","Arial Narrow",HELVETICA;background:#fff;-webkit-text-size-adjust:100%;}
+a{color:#2d374b;text-decoration:none}
+a:hover{color:#cd0200;text-decoration:underline}
+em{font-style:normal}
+li{list-style:none}
+img{border:0;vertical-align:middle}
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word}
+
+@font-face {
+    font-family: 'UnidreamLED';
+    src:url(../fonts/UnidreamLED/UnidreamLED.eot); /***兼容ie9***/
+    src:url(../fonts/UnidreamLED/UnidreamLED.eot?#iefix)format('embedded-opentype'), /***兼容ie6-ie8***/
+    url('../fonts/UnidreamLED/UnidreamLED.woff') format('woff'),
+    local('UnidreamLED'), url("../fonts/UnidreamLED/UnidreamLED.woff");/***默认使用本地的***/
+}
+body{
+    background-color: #111820;
+}
+.global{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+
+}
+.top{
+    position: relative;
+    width: 1920px;
+    height: 160px;
+}
+.title{
+    position: relative;
+}
+.title-zh{
+    position: absolute;
+    left: 41.7px;
+    top: 61.057px;
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+
+}
+.title-en{
+    position: absolute;
+    font-size: 24px;
+    color: rgb(96, 108, 116);
+    line-height: 1.2;
+    left: 41.892px;
+    top: 104.062px;
+
+}
+.menu-list{
+    position: relative;
+    left: 420px;
+    width: 800px;
+    height: 160px;
+}
+.menu-list ul li{
+    float: left;
+    font-size: 22px;
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    margin-left: 20px;
+    margin-top: 61.97px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+}
+.menu-list ul li:hover{
+    border-bottom: 5px solid rgb(51, 252, 255);
+    border-radius: 10%;
+}
+.bottom-left{
+    position: relative;
+    left:40px;
+    top: 20px;
+    width:320px;
+    height: 877px;
+    border: 1px solid rgb(27, 65, 117);
+    background-color: rgb(17, 24, 32);
+
+}
+.video-list-title{
+    position: relative;
+    left: 20px;
+    top: 50px;
+    width: 200px;
+    height: 30px;
+
+}
+.video-list-title span{
+    position: absolute;
+    left: 0;
+    top: 6px;
+
+}
+.video-list-title p{
+    position: absolute;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    direction:ltr;
+    left: 20px;
+    top: 5px;
+
+}
+/*搜索栏 start*/
+.search-box{
+    position: relative;
+    top: 31px;
+    left:18px;
+    width: 280px;
+    height: 40px;
+    background-color: rgb(11, 77, 153);
+    border-radius: 4px;
+}
+.search-box input{
+    position: absolute;
+    padding: 12px 5px;
+    width: 280px;
+    height: 40px;
+    background-color: rgb(11, 77, 153);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.search-box span{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+
+}
+.search-history{
+    position: relative;
+    display: none;
+    width: 280px;
+    left:18px;
+    top: 31px;
+    border-width: 1px;
+    border-color: rgb(18, 124, 244);
+    border-style: solid;
+    border-radius: 4px;
+    background-color: rgb(5, 33, 73);
+
+}
+.search-history p{
+    font-size: 14px;
+    color: rgb(139, 170, 250);
+    line-height: 1.2;
+    position: relative;
+    left: 10px;
+    top: 5px;
+
+}
+.search-history ul{
+    margin-top: 10px;
+    width: 280px;
+    position: relative;
+}
+.search-history ul li{
+    width: 280px;
+    font-size: 14px;
+    color: rgb(139, 170, 250);
+    padding-left: 10px;
+    margin-top: 6px;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    box-sizing: border-box;
+
+}
+.search-history ul li:hover{
+    background-color: rgb(18, 124, 242);
+}
+.address-list ul{
+    position: relative;
+
+    font-size: 16px;
+    color: rgb(209, 233, 255);
+    line-height: 1.2;
+
+    left: 26px;
+    top: 56px;
+    margin-top: 20px;
+    cursor: pointer;
+
+}
+.address-list ul li{
+    position: relative;
+    font-size: 14px;
+    color: rgb(209, 233, 255);
+    line-height: 1.2;
+    left: 30px;
+    top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.address-list ul li:hover{
+    color: rgb(18, 167, 244);
+}
+/*搜索栏 end*/
+
+.bottom-right{
+    border-width: 1px;
+    border-color: rgb(27, 65, 117);
+    border-style: solid;
+    background-color: rgb(17, 24, 32);
+    position: absolute;
+    left: 380px;
+    top: 180px;
+    width: 1498px;
+    height: 875px;
+
+}
+.bottom-right ul{
+    position: relative;
+    top: 15px;
+}
+
+.bottom-right ul li{
+    position: relative;
+    float: left;
+    width: 345px;
+    height: 258px;
+    margin-left: 20px;
+    margin-top: 15px;
+    border:2px solid rgb(27, 65, 117);
+    border-radius: 4px;
+    background-color: rgb(12, 25, 42);
+}
+.bottom-right ul li:hover{
+    border:2px solid #33FCFF;
+}
+
+.video-info{
+    position: absolute;
+    bottom: 0;
+    width:345px;
+    height: 46px;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    z-index: 5;
+
+}
+.video-info div{
+    margin-top: 12px;
+}
+.video-info span{
+    font-size: 14px;
+    color: rgb(204, 204, 204);
+    line-height: 1.2;
+    margin-left: 30px;
+}
+
+.video-info-bg{
+    position: absolute;
+    bottom: 0;
+    width:345px;
+    height: 46px;
+    background-color: black;
+    z-index: 2;
+    opacity: .6;
+}
+
+.clear{
+    clear: both;
+}

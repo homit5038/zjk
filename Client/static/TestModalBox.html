@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/layui-v2.5.4/layui/css/layui.css">
+</head>
+<body>
+<!--2.修改字典模态框-->
+
+<input type="hidden" id="hidden_update_index">
+<div class="x-body" style="display: block" id="updateModal">
+    <form class="layui-form" id="updateDictionaryForm">
+        <!--0.隐藏上级字典编号-->
+        <div class="layui-form-item">
+            <label for="dictionaryname" class="layui-form-label">
+                上级字典
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="update_updictionaryname"  disabled  class="layui-input" value="">
+                <%--隐藏需要修改的字典编号--%>
+                <input type="hidden" name="dictionaryid" id="update_dictionaryid">
+            </div>
+        </div>
+
+        <!--1.字典名称-->
+        <div class="layui-form-item">
+            <label for="dictionaryname" class="layui-form-label">
+                字典名称
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="update_dictionaryname" name="dictionaryname" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>必须填写
+            </div>
+        </div>
+        <!--2 字典描述-->
+        <div class="layui-form-item layui-form-text">
+            <label for="dictionaryname" class="layui-form-label">
+                字典描述
+            </label>
+            <div class="layui-input-inline">
+                <input type="text"  name="description" lay-verify="required" id="update_description"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>必须填写
+            </div>
+        </div>
+
+        <div class="">
+            <label for="dictionaryname" class="layui-form-label">
+                字典状态
+            </label>
+            <div class="">
+                <input type="radio"  name="isuse" class="update_isuse"  value="1" title="启用">
+                <input type="radio"  name="isuse" class="update_isuse" value="0" title="禁用" >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <button class="layui-btn" lay-submit lay-filter="updateDictionary" type="button">修改</button>
+        </div>
+    </form>
+</div>
+<script src="../lib/layui-v2.5.4/layui/layui.js"></script>
+<script>
+    /**
+     * 打开修改字典信息模态框
+     * @param obj   将修改按钮自己传下来
+     */
+    function openUpdateDict(obj){
+        var tr= $(obj).parent().parent();//获取到tr元素
+        var update_dictionaryid = tr.children("td:eq(0)").children("input:hidden").val();//字典变
+        var update_dictionaryname = tr.children("td:eq(2)").text();//字典名称
+        var update_updictionaryname = tr.children("td:eq(3)").text();//上级字典名称
+        var update_description = tr.children("td:eq(4)").text();//字典描述
+        var update_isuse = tr.children("td:eq(5)").children("input:hidden").val();//字典状态
+        $("#update_dictionaryid").val(update_dictionaryid);
+        $("#update_dictionaryname").val(update_dictionaryname);
+        $("#update_updictionaryname").val(update_updictionaryname);
+        $("#update_description").val(update_description);
+        /*    $(".update_isuse").each(function () {
+               if($(this).val()==update_isuse){
+                   alert($(this).val())
+                   $(this).prop("chcked","checked");
+               }
+            });*/
+        $(".update_isuse:radio").removeAttr("checked");//删除checked属性
+        $(".update_isuse:radio[value='"+update_isuse+"']").attr("checked", true);
+        form.render('radio'); //重新渲染radio单选框
+        var  width=($(window).width()*0.80);
+        var height=($(window).height()*0.70);
+        var index = layer.open({
+            title:'修改字典信息',
+            area: [width+'px', height +'px'],//大小
+            fix: true, //不固定
+            maxmin: true,
+            zIndex:500,
+            shadeClose: false,
+            shade:0.4,
+            type:1,
+            content:$('#updateModal')
+        });
+        //向页面隐藏index
+        $("#hidden_update_index").val(index);
+    }
+
+    //监听修改表单的提交事件
+    layui.use(['layer','form'],function () {
+        var layer = layui.layer,form = layui.form;
+        form.on('submit(updateDictionary)', function(data){
+            $.ajax({
+                url:contextPath+"/dictionary/updateDict.do",
+                data:data.field,
+                type:'post',
+                datatype:'text',
+                success:function (response) {
+                    layer.msg(response,{time:1500},function () {
+                        if("修改成功"==response){
+                            layer.close($("#hidden_update_index").val()); //关闭当前窗口
+                            window.location.reload();//刷新页面
+                        }
+                    });
+                }
+            });
+        });
+    })
+</script>
+</body>
+</html>

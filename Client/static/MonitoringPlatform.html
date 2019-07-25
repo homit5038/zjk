@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/monitoringPlatform.css">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=BKTAqwUsGyx68zp7bjuNSSLnnpy71wh7">
+        //v3.0版本的引用方式：src="http://api.map.baidu.com/api?v=3.0&ak=您的密钥"
+    </script>
+    <title>Document</title>
+</head>
+<body>
+<!--baiduMap-->
+<div id="container"></div>
+
+<div class="my-title">
+    <p class="my-title-zh">西山区网格监督员轨迹监管平台</p>
+    <p class="my-title-en">Trajectory Monitoring Platform</p>
+</div>
+<div class="num-ratio">
+    <p class="num-ratio-p">岗位人数比例</p>
+    <div>
+        <div class="num-ratio-div">
+            <span>24236</span>
+            <p>总人数</p>
+        </div>
+        <div class="num-ratio-div">
+            <span>2464</span>
+            <p>在岗人数</p>
+        </div>
+        <div class="num-ratio-div">
+            <span>246</span>
+            <p>请假人数</p>
+        </div>
+    </div>
+</div>
+<div class="num-ratio-list">
+    <div class="num-ratio-list-bg">
+
+    </div>
+    <div class="num-ratio-list-fg">
+        <div class="num-ratio-list-fg-left">
+            <div class="num-ratio-block">
+                <span style="font-size: 14px;color: rgb(1, 253, 255);border: 1px rgb(1, 253, 255) solid;padding: 2px;box-sizing: border-box">
+                    在岗人数
+                </span>
+                <div>
+                    <span>89.7</span><span>%</span>
+                </div>
+            </div>
+            <div class="num-ratio-block">
+                <span>
+                    正常
+                </span>
+                <p>425</p>
+            </div>
+            <div class="num-ratio-block">
+                <span>
+                    迟到
+                </span>
+                <p>64</p>
+            </div>
+        </div>
+        <div class="num-ratio-list-fg-middle">
+            <img src="../image/1_03.png" width="260px" height="260px" alt="">
+        </div>
+        <div class="num-ratio-list-fg-right">
+            <div class="num-ratio-block">
+                <span>
+                    总人数
+                </span>
+                <p>28</p>
+            </div>
+            <div class="num-ratio-block">
+                <span style="font-size: 14px;color: rgb(1, 253, 255);border: 1px rgb(1, 253, 255) solid;padding: 2px;box-sizing: border-box">
+                    请假人数
+                </span>
+                <div>
+                    <span>4.6</span><span>%</span>
+                </div>
+            </div>
+            <div class="num-ratio-block">
+                <span>
+                    请假
+                </span>
+                <p>28</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="area-table-head">
+    <div class="now-area">
+        网格监督员所在区域
+    </div>
+    <div class="admin-name">
+        管理员姓名
+    </div>
+    <div class="attendance">
+        考勤打卡
+    </div>
+    <div class="now-timer">
+        <div>年</div>
+        <div>月</div>
+        <div>日</div>
+    </div>
+</div>
+<div class="area-table-body">
+    <div class="area-table-body-bg"></div>
+    <div class="area-table-body-fg">
+        <table>
+            <tbody>
+            <tr>
+                <td class="area-table-td1">西山区永昌社区</td>
+                <td class="area-table-td2">王二狗</td>
+                <td class="area-table-td2">08:26</td>
+                <td class="area-table-td4">2019年7月15日</td>
+            </tr>
+            <tr>
+                <td class="area-table-td1">西山区永昌社区</td>
+                <td class="area-table-td2">王二狗</td>
+                <td class="area-table-td2">08:26</td>
+                <td class="area-table-td4">2019年7月15日</td>
+            </tr>
+            <tr>
+                <td class="area-table-td1">西山区永昌社区</td>
+                <td class="area-table-td2">王二狗</td>
+                <td class="area-table-td2">08:26</td>
+                <td class="area-table-td4">2019年7月15日</td>
+            </tr>
+            <tr>
+                <td class="area-table-td1">西山区永昌社区</td>
+                <td class="area-table-td2">王二狗</td>
+                <td class="area-table-td2">08:26</td>
+                <td class="area-table-td4">2019年7月15日</td>
+            </tr>
+            <tr>
+                <td class="area-table-td1">西山区永昌社区</td>
+                <td class="area-table-td2">王二狗</td>
+                <td class="area-table-td2">08:26</td>
+                <td class="area-table-td4">2019年7月15日</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="tab-li">
+    <div>
+        总览
+    </div>
+    <div id="search_modal">
+        查阅
+    </div>
+</div>
+
+<div class="weather">
+    <ul>
+        <li>13:07:24</li>
+        <li style="font-size: 26px;margin-top: -5px">西山区&nbsp;|</li>
+        <li>天气</li>
+        <li>
+            <div class="shutdown-weather">
+                <a href="../static/BackStageSystem.html">
+                    <img src="../image/icon/shutdown.png" width="24" height="24" alt="">&nbsp;<span style="color: white">关闭</span>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="gps-info">
+    <div class="gps-info-title">
+        定位信息
+    </div>
+    <hr class="gps-info-line">
+    <p>
+        云南省昆明市西山区永昌小区
+    </p>
+    <div class="gps-info-time">
+        09:24:35
+    </div>
+    <hr class="gps-info-line" style="top: 130px">
+    <div class="work-in-num">
+        <span class="work-in-num-span1">实施在岗人数</span>&nbsp;
+        <span class="work-in-num-span2">538566</span>
+    </div>
+</div>
+<div class="work-in-attention">
+    <img class="work-attention-img" src="../image/icon/green-angle.png" width="12" height="12" alt="">
+    <div class="work-in-attention-div">12</div>
+    <span class="work-attention-span">人员到位提醒</span>
+    <p class="work-attention-p safe-color">提示</p>
+    <div class="number-icon">
+        <img src="../image/icon/dot-green.png" width="18" height="18" alt="">
+        <p>2</p>
+    </div>
+</div>
+<div class="work-leave-attention">
+    <img class="work-attention-img" src="../image/icon/green-angle.png" width="12" height="12" alt="">
+    <div class="work-leave-attention-div">49</div>
+    <span class="work-attention-span">人员离开区域</span>
+    <p class="work-attention-p warn-color">警报</p>
+    <div class="number-icon">
+        <img src="../image/icon/dot-red.png" width="18" height="18" alt="">
+        <p>2</p>
+    </div>
+</div>
+<div class="work-gather-attention">
+    <img class="work-attention-img" src="../image/icon/green-angle.png" width="12" height="12" alt="">
+    <div class="work-leave-attention-div">36</div>
+    <span class="work-attention-span">人员聚集预警</span>
+    <p class="work-attention-p warn-color">警报</p>
+    <div class="number-icon">
+        <img src="../image/icon/dot-red.png" width="18" height="18" alt="">
+        <p>2</p>
+    </div>
+</div>
+<div class="attention-modal">
+    <p class="attention-modal-p safe-color">人员到位提醒</p>
+    <img class="attention-modal-img" src="../image/icon/fork.png" width="30" height="30" alt="">
+    <div class="attention-modal-div">
+        <p>人员到位已经到位马街街道办事处506号</p>
+        <div>
+            于2019年7月15日，要求派遣人员到马街街道办事处506号的人员先以到达指定位置，请监管人员注意！
+        </div>
+        <img src="../image/icon/up.png" width="24" height="24" alt="">
+        <img src="../image/icon/down.png" style="display: none" width="24" height="24" alt="">
+    </div>
+    <div class="attention-modal-div">
+        <p>人员到位已经到位马街街道办事处506号</p>
+        <div>
+            于2019年7月15日，要求派遣人员到马街街道办事处506号的人员先以到达指定位置，请监管人员注意！
+        </div>
+        <img src="../image/icon/up.png" width="24" height="24" alt="">
+        <img src="../image/icon/down.png" style="display: none" width="24" height="24" alt="">
+    </div>
+    <div class="attention-modal-div">
+        <p>人员到位已经到位马街街道办事处506号</p>
+        <div>
+            于2019年7月15日，要求派遣人员到马街街道办事处506号的人员先以到达指定位置，请监管人员注意！
+        </div>
+        <img src="../image/icon/up.png" width="24" height="24" alt="">
+        <img src="../image/icon/down.png" style="display: none" width="24" height="24" alt="">
+    </div>
+    <div class="attention-modal-div">
+        <p>人员到位已经到位马街街道办事处506号</p>
+        <div>
+            于2019年7月15日，要求派遣人员到马街街道办事处506号的人员先以到达指定位置，请监管人员注意！
+        </div>
+        <img src="../image/icon/up.png" width="24" height="24" alt="">
+        <img src="../image/icon/down.png" style="display: none" width="24" height="24" alt="">
+    </div>
+    <div class="attention-modal-div">
+        <p>人员到位已经到位马街街道办事处506号</p>
+        <div>
+            于2019年7月15日，要求派遣人员到马街街道办事处506号的人员先以到达指定位置，请监管人员注意！
+        </div>
+        <img src="../image/icon/up.png" width="24" height="24" alt="">
+        <img src="../image/icon/down.png" style="display: none" width="24" height="24" alt="">
+    </div>
+</div>
+<div class="search-modal">
+    <div class="shutdown-search-modal">
+        <img src="../image/icon/shutdown.png" width="48" height="48" alt="">
+    </div>
+    <div class="search-modal-box">
+        <div class="search-title">
+            <img src="../image/icon/search2.png" width="20" height="20" alt="">
+            <p>信息查询</p>
+        </div>
+        <form id="" action="#">
+            <div class="condition-list">
+                <div>
+                    <select class="condition-list-area" name="" id="condition_list_area">
+                        <option value="0">区域选择</option>
+                        <option value="1">选项1</option>
+                        <option value="2">选项2</option>
+                        <option value="3">选项3</option>
+                        <option value="4">选项4</option>
+                    </select>
+                </div>
+                <div >
+                    <select class="condition-list-person" name="" id="condition_list_person">
+                        <option value="0">人员</option>
+                        <option value="1">选项1</option>
+                        <option value="2">选项2</option>
+                        <option value="3">选项3</option>
+                        <option value="4">选项4</option>
+                    </select>
+                </div>
+                <div>
+                    <input class="condition-list-time" type="date" value="2019-01-01" min="2019-01-01" max="2099-09-09"/>
+                </div>
+                <div class="search-modal-input">
+                    <input type="text" placeholder="请输入查询"/>
+                    <img src="../image/icon/search-green.png" width="24" height="24" alt="">
+                </div>
+            </div>
+        </form>
+        <div class="person-info-table">
+            <table>
+                <thead>
+                <tr>
+                    <td style="display: none">id</td>
+                    <td>人员</td>
+                    <td>时间</td>
+                    <td>区域</td>
+                    <td>活动时间段</td>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="now-click-info">
+                    <td style="display: none">1</td>
+                    <td>王二狗1</td>
+                    <td>2019年7月16日</td>
+                    <td>云南省昆明市西山区金马街道办</td>
+                    <td>2019/07/16 09:13:24 - 2019/07/16 12:01:52</td>
+                </tr>
+                <tr class="now-click-info">
+                    <td style="display: none">2</td>
+                    <td>王二狗2</td>
+                    <td>2019年7月16日</td>
+                    <td>云南省昆明市西山区金马街道办</td>
+                    <td>2019/07/16 09:13:24 - 2019/07/16 12:01:52</td>
+                </tr>
+                <tr class="now-click-info">
+                    <td>王二狗3</td>
+                    <td>2019年7月16日</td>
+                    <td>云南省昆明市西山区金马街道办</td>
+                    <td>2019/07/16 09:13:24 - 2019/07/16 12:01:52</td>
+                </tr>
+                <tr class="now-click-info">
+                    <td>王二狗</td>
+                    <td>2019年7月16日</td>
+                    <td>云南省昆明市西山区金马街道办</td>
+                    <td>2019/07/16 09:13:24 - 2019/07/16 12:01:52</td>
+                </tr>
+                <tr class="now-click-info">
+                    <td>王二狗</td>
+                    <td>2019年7月16日</td>
+                    <td>云南省昆明市西山区金马街道办</td>
+                    <td>2019/07/16 09:13:24 - 2019/07/16 12:01:52</td>
+                </tr>
+                <tr class="now-click-info">
+                    <td>王二狗</td>
+                    <td>2019年7月16日</td>
+                    <td>云南省昆明市西山区金马街道办</td>
+                    <td>2019/07/16 09:13:24 - 2019/07/16 12:01:52</td>
+                </tr>
+                <tr class="now-click-info">
+                    <td>王二狗</td>
+                    <td>2019年7月16日</td>
+                    <td>云南省昆明市西山区金马街道办</td>
+                    <td>2019/07/16 09:13:24 - 2019/07/16 12:01:52</td>
+                </tr>
+                <tr class="now-click-info">
+                    <td>王二狗</td>
+                    <td>2019年7月16日</td>
+                    <td>云南省昆明市西山区金马街道办</td>
+                    <td>2019/07/16 09:13:24 - 2019/07/16 12:01:52</td>
+                </tr>
+                <tr class="now-click-info">
+                    <td>王二狗</td>
+                    <td>2019年7月16日</td>
+                    <td>云南省昆明市西山区金马街道办</td>
+                    <td>2019/07/16 09:13:24 - 2019/07/16 12:01:52</td>
+                </tr>
+                <tr class="now-click-info">
+                    <td>王二狗</td>
+                    <td>2019年7月16日</td>
+                    <td>云南省昆明市西山区金马街道办</td>
+                    <td>2019/07/16 09:13:24 - 2019/07/16 12:01:52</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="paging-bar">
+            <ul>
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+            <div>
+                &nbsp;跳转至
+                <input type="number">&nbsp;页
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="clear"></div>
+<!--baidumap js-->
+<script type="text/javascript" src="../js/monitoringList.js"></script>
+<script src="../js/MonitoringPlatform.js"></script>
+<script>
+    (function () {
+        var now_click_info=document.querySelectorAll(".now-click-info");
+        for(var i=0;i<now_click_info.length;i++){
+            now_click_info[i].addEventListener("click",function () {
+                //获取当前点击行的最后列的内容
+                alert(this.getElementsByTagName("td")[0].innerHTML);
+                window.location.href="../static/PersonTrack.html?id="+this.getElementsByTagName("td")[0].innerHTML;
+            })
+        }
+    })();
+</script>
+</body>
+</html>
