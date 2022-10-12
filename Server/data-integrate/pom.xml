@@ -25,7 +25,7 @@
         <!-- 数据库相关 End -->
 
         <!-- Shiro 权限相关 Start -->
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.10.0</shiro.version>
         <jwt.version>3.8.0</jwt.version>
         <!-- Shiro 权限相关 End -->
 
